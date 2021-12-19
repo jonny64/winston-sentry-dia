@@ -81,7 +81,7 @@ module.exports = class SentryTransport extends Transport {
     let u = context.parent && context.parent.user? context.parent.user : null
     let user = !u? null : {
       id          : u.uuid,
-      username    : u.login || null,
+      username    : u.login || u.ext_id || null,
       ip_address  : u.remote_addr || null,
     }
 
