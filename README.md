@@ -17,21 +17,29 @@ Follow the steps in [sentry's docs](https://docs.sentry.io/error-reporting/quick
 Initialize the transport and tell winston about it like this:
 
 ```
-const winston = require('winston');
-const SentryTransportDia = require('winston-sentry-dia');
-const Sentry = require('@sentry/node');
+const winston            = require ('winston')
+const Sentry             = require('@sentry/node')
+const SentryTransportDia = require ('winston-sentry-dia')
 
-Sentry.init({
-  /* sentry init values */
-});
+init_logging () {
 
+	this.logging_container = new winston.Container ()
 
-module.exports = new winston.Logger({
-  transports: [
-    /* ... your other transports */
-    new SentryTransportDia({ Sentry }),
-  ]
-});
+	Sentry.init (this.sentry)
+
+	for (let category of ['app', 'db', 'http', 'queue', 'f_s']) this.logging_container.add (category, {
+
+		format: new Dia.Logger ({category}),
+
+		transports: [
+			new winston.transports.Console (),
+			new SentryTransportDia ({ Sentry })
+		]
+
+	})
+
+}
+
 ```
 
 ## Logging behavior
