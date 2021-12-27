@@ -17,9 +17,7 @@
     "url": "https://github.com/jonny64/winston-sentry-dia/issues"
   },
   "homepage": "https://github.com/jonny64/winston-sentry-dia#readme",
-  "dependencies": {
-    "lodash": "^4.17.15"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "winston-transport": "4.x"
   },
