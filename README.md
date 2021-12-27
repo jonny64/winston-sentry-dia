@@ -1,3 +1,5 @@
+[![build](https://github.com/jonny64/winston-sentry-dia/actions/workflows/build.yml/badge.svg)](https://github.com/jonny64/winston-sentry-dia/actions/workflows/build.yml)
+
 # winston-sentry-dia
 
 A simple winston transport that logs [dia.js](https://github.com/do-/dia.js/) errors to sentry.
