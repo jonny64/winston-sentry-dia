@@ -4,7 +4,7 @@
 
 A simple winston transport that logs [dia.js](https://github.com/do-/dia.js/) errors to sentry.
 
-This transport is for winston 3.x and uses the new `@sentry/node` SDK.
+This transport is for winston 3.x and uses `@sentry/node` SDK.
 
 ## Installation
 
@@ -46,4 +46,6 @@ init_logging () {
 
 ## Logging behavior
 
-Whenever an error with level `fatal` or `error` are logged with your winston logger that error will also be logged to sentry.
+Whenever an error with level `error` are logged with your winston logger that error will also be logged to sentry.
+
+All previous events with lower level will are cached as [breadcrumbs](https://docs.sentry.io/platforms/node/enriching-events/breadcrumbs/)
