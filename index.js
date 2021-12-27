@@ -1,5 +1,4 @@
-const _ = require('lodash')
-const Transport = require('winston-transport')
+const Transport = require ('winston-transport')
 
 const normalizeMessage = (msg, meta) => {
   let message = msg
@@ -21,27 +20,23 @@ module.exports = class SentryTransport extends Transport {
   constructor(options) {
     options = options || {}
     options.level = 'debug' // log anything as breadcrumb
-    options = _.defaultsDeep(options, {
-      name: 'SentryTransport',
-      silent: false,
-      levelsMap: {
-        silly: 'debug',
-        verbose: 'debug',
-        info: 'info',
-        debug: 'debug',
-        warn: 'warning',
-        error: 'error'
-      }
-    })
+    options.name = options.name || 'SentryTransport'
+    options.silent = options.silent || false
+    options.levelsMap = options.levelsMap || {
+      silly: 'debug',
+      verbose: 'debug',
+      info: 'info',
+      debug: 'debug',
+      warn: 'warning',
+      error: 'error'
+    }
 
-    super(_.omit(options, [
-      'Sentry',
-      'levelsMap'
-    ]))
+    let {Sentry, levelsMap, ...o} = options
+    super(o)
 
-    this._sentry = options.Sentry
+    this._sentry = Sentry
+    this._levelsMap = levelsMap
     this._silent = options.silent
-    this._levelsMap = options.levelsMap
     this._close = options.close
   }
 
