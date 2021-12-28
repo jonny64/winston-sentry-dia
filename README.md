@@ -9,7 +9,7 @@ This transport is for winston 3.x and uses `@sentry/node` SDK.
 ## Installation
 
 ```
-npm install --save winston-sentry-dia
+npm install --save winston-sentry-dia @sentry/node winston
 ```
 
 ## Usage
